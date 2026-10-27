@@ -1,0 +1,6 @@
+{
+  "name": "Ideal Design Concept - Projex Tech Demo",
+  "description": "Demostración comercial premium para el sector de muebles y alta decoración con configurador interactivo, cotizaciones B2B y catálogo arquitectónico.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

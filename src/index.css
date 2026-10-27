@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F0EDE6;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1C7B7;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B3A48F;
+}
+
+/* Luxury animations and transitions */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 219, 206, 0.7);
+}
+
+.glass-panel-dark {
+  background: rgba(26, 25, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #D4AF37 0%, #B89742 50%, #8A6D24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
