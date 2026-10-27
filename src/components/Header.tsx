@@ -8,7 +8,8 @@ import {
   X, 
   ArrowRight,
   ShieldCheck,
-  Compass
+  Compass,
+  Smartphone
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -18,7 +19,8 @@ export const Header: React.FC = () => {
     currentView, 
     setCurrentView, 
     setIsProjexModalOpen,
-    quotes 
+    quotes,
+    setIsMobileSimulatorOpen 
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -116,6 +118,16 @@ export const Header: React.FC = () => {
             {/* Action Bar */}
             <div className="flex items-center gap-2.5 sm:gap-4">
               
+              {/* Mobile App Simulator Trigger */}
+              <button
+                onClick={() => setIsMobileSimulatorOpen(true)}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF6EE] text-[#8C6F35] border border-[#E0D7C5] hover:bg-[#C2A370] hover:text-[#1C1B1A] transition-all text-xs font-semibold cursor-pointer shadow-xs"
+                title="Abrir Simulador da App Mobile (Referências)"
+              >
+                <Smartphone className="w-3.5 h-3.5" />
+                <span className="hidden xl:inline">Modo App Mobile</span>
+              </button>
+
               {/* Switch View to CRM / Admin */}
               <button
                 onClick={() => setCurrentView(currentView === 'store' ? 'admin' : 'store')}
@@ -215,6 +227,16 @@ export const Header: React.FC = () => {
               >
                 <LayoutDashboard className="w-4 h-4" />
                 {currentView === 'admin' ? 'Volver a la Tienda' : 'Panel de Gestión CRM (Ficticio)'}
+              </button>
+              <button
+                onClick={() => {
+                  setIsMobileSimulatorOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="text-left text-sm uppercase tracking-widest text-[#8C6F35] font-semibold py-1 flex items-center gap-2"
+              >
+                <Smartphone className="w-4 h-4" />
+                Ver Modo App Móvil (Referencias)
               </button>
             </div>
 

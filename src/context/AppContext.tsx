@@ -36,6 +36,14 @@ interface AppContextType {
   isQuoteModalOpen: boolean;
   setIsQuoteModalOpen: (open: boolean) => void;
 
+  // Favorites / Saved items
+  favorites: string[];
+  toggleFavorite: (id: string) => void;
+
+  // Mobile App Simulator View
+  isMobileSimulatorOpen: boolean;
+  setIsMobileSimulatorOpen: (open: boolean) => void;
+
   // Notification toast
   toastMessage: string | null;
   showToast: (msg: string) => void;
@@ -68,7 +76,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [sofaConfig, setSofaConfig] = useState<SofaConfiguration>(INITIAL_SOFA_CONFIG);
   const [isProjexModalOpen, setIsProjexModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
+  const [favorites, setFavorites] = useState<string[]>(['butaca-nube-boucle', 'sofa-curva-organica']);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const toggleFavorite = (id: string) => {
+    setFavorites((prev) => {
+      const exists = prev.includes(id);
+      if (exists) {
+        showToast('Pieza retirada de favoritos.');
+        return prev.filter((item) => item !== id);
+      } else {
+        showToast('Pieza guardada en tus favoritos de proyecto.');
+        return [...prev, id];
+      }
+    });
+  };
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -147,6 +170,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setIsProjexModalOpen,
         isQuoteModalOpen,
         setIsQuoteModalOpen,
+        favorites,
+        toggleFavorite,
+        isMobileSimulatorOpen,
+        setIsMobileSimulatorOpen,
         toastMessage,
         showToast,
       }}
